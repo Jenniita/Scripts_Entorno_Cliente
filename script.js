@@ -309,14 +309,17 @@ function renderizarCompra() {
   listaCarrito.innerHTML = "";
 
   //Hacemos un foreach para que recorra el array del carrito e imprima cada producto
-  carrito.forEach((nombre, precio) => {
+  carrito.forEach((producto) => {
     //Creamos el li que irá dentro de el ul "lista"
-    const item = document.createElement("li");
+    const itemC = document.createElement("li");
     //Escribimos lo que tendrá ese li, es decir, el producto con el precio
-    item.textContent = `${nombre, precio}`;
+    itemC.textContent = `${producto.nombre} ${producto.precio}`;
     //Lo agregamos a la lista
-    listaCarrito.appendChild(item);
+    listaCarrito.appendChild(itemC);
   });
+
+  //Total del carrito de compra
+  
   
 }
 
@@ -327,17 +330,20 @@ renderizarCompra()
 document.querySelector(".btn-teclado").addEventListener("click", () => {
   //Para añadir al carrito lo hacemos con un push
   carrito.push({ nombre: "teclado", precio: 25 });
-  console.log(carrito);
+  console.log(listaCarrito);
+  renderizarCompra()
 });
 
 document.querySelector(".btn-raton").addEventListener("click", () => {
   //Para añadir al carrito lo hacemos con un push
   carrito.push({ nombre: "raton", precio: 15 });
   console.log(carrito);
+  renderizarCompra()
 });
 
 document.querySelector(".btn-monitor").addEventListener("click", () => {
   //Para añadir al carrito lo hacemos con un push
   carrito.push({ nombre: "monitor", precio: 180 });
   console.log(carrito);
+  renderizarCompra()
 });
