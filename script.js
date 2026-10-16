@@ -299,13 +299,18 @@ const productosEjercicio = [
   { nombre: "raton", precio: 15 },
   { nombre: "monitor", precio: 180 },
 ];
+//array para ir metiendo los productos al carrito
 const carrito = [];
 
 const listaCarrito = document.querySelector(".lista-carrito");
+const totalCarrito = document.querySelector(".total")
+
+
+
 
 //función para renderizar
 function renderizarCompra() {
-   //SEGUNDA PARTE - Escribimos en HTML
+  //SEGUNDA PARTE - Escribimos en HTML
   listaCarrito.innerHTML = "";
 
   //Hacemos un foreach para que recorra el array del carrito e imprima cada producto
@@ -316,11 +321,17 @@ function renderizarCompra() {
     itemC.textContent = `${producto.nombre} ${producto.precio}`;
     //Lo agregamos a la lista
     listaCarrito.appendChild(itemC);
+
+    //constante para la suma del total
+    const totalCompra = carrito.reduce(
+      (acumulador, { precio: precioProductos }) => acumulador + precioProductos, 0,);
+    //Total del carrito de compra
+    totalCarrito.innerHTML = `Total: ${totalCompra}`
+    //console.log(totalCompra)
+
   });
 
-  //Total del carrito de compra
-  
-  
+
 }
 
 renderizarCompra()
@@ -347,3 +358,4 @@ document.querySelector(".btn-monitor").addEventListener("click", () => {
   console.log(carrito);
   renderizarCompra()
 });
+
