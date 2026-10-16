@@ -224,7 +224,8 @@ console.log("--------------");
 
 const precios = [25, 180, 15, 950, 45];
 
-//variable que no va a ser constante para indicar el orden; empieza en original
+//Variable que no va a ser constante para indicar el orden; empieza en original
+//Es el estado, cuando cambie el estado, cambia la información que vemos, es decir, se renderiza. Siempre empieza con un estado
 let orden = "original";
 
 console.log("Array de precios original");
@@ -233,15 +234,16 @@ console.log(precios);
 //constante para seleccionar en el html el ul llamado lista
 const lista = document.querySelector(".lista");
 
-//función para renderizar
+//función para renderizar (pintar en pantalla; mostrar en pantalla)
 function renderizar() {
   //PRIMERA PARTE - Cómo funciona la función
 
-  //variable llamada visibles que mostrará el array en función al orden que tenga
+  //variable llamada visibles que mostrará el array en función al orden(estado) que tenga. De primeras está en original porque es el estado inicial que hemos puesto
   let visibles = precios;
 
   //Si el orden corresponde con "asc" el precio(número) irá del más bajo al más alto (ascendiendo)
   if (orden === "asc") {
+    //Sort es un método inmutable, puesto que me devuelve otro array
     visibles = [...precios].sort((a, b) => a - b);
     //Si el orden corresponde con "desc" el precio(número)
   } else if (orden === "desc") {
@@ -249,11 +251,12 @@ function renderizar() {
   }
 
   //SEGUNDA PARTE - Escribimos en HTML
+  //Le metemos un html, por ahora vacio
   lista.innerHTML = "";
 
   //Hacemos un foreach para que recorra cada elemento de la variable visibles, que contiene el array de los precios
   visibles.forEach((precio) => {
-    //Creamos el li que irá dentro de el ul "lista"
+    //Creamos el "li" que irá dentro de el "ul" "lista"
     const item = document.createElement("li");
     //Escribimos lo que tendrá ese li, es decir, el precio correspondiente (el número)
     item.textContent = `${precio} €`;
