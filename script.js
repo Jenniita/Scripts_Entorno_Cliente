@@ -250,7 +250,7 @@ function renderizar() {
     visibles = [...precios].sort((a, b) => b - a);
   }
 
-  //SEGUNDA PARTE - Escribimos en HTML
+  //SEGUNDA PARTE - Escribimos en HTML - RENDERIZAMOS
   //Le metemos un html, por ahora vacio
   lista.innerHTML = "";
 
@@ -361,4 +361,7 @@ document.querySelector(".btn-monitor").addEventListener("click", () => {
   console.log(carrito);
   renderizarCompra()
 });
+
+
+
 
