@@ -47,5 +47,5 @@ const tarjetaColor = document.querySelectorAll(".card")
 tarjetaColor.forEach(elemento => elemento.addEventListener("click", (event) =>{
    //Como quiero que se cambie el color de la tarjeta justo que estoy clickando, usamos current target
     console.log(event.currentTarget)
-    
+    event.currentTarget.classList.toggle("tarjetaActiva")
 }))
