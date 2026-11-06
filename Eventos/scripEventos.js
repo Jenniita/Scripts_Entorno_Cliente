@@ -40,3 +40,12 @@ tarjeta.forEach(elemento => elemento.addEventListener("click", (event) =>{
 
 console.log("Ejercicio 4")
 //Clickar la tarjeta cambiar color de la tarjeta, en el corazon, cambia el color del corazon, en el boton, se añade al carrito
+
+const tarjetaColor = document.querySelectorAll(".card")
+
+
+tarjetaColor.forEach(elemento => elemento.addEventListener("click", (event) =>{
+   //Como quiero que se cambie el color de la tarjeta justo que estoy clickando, usamos current target
+    console.log(event.currentTarget)
+    
+}))
