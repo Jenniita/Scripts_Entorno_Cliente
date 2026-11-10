@@ -41,11 +41,100 @@ tarjeta.forEach(elemento => elemento.addEventListener("click", (event) =>{
 console.log("Ejercicio 4")
 //Clickar la tarjeta cambiar color de la tarjeta, en el corazon, cambia el color del corazon, en el boton, se añade al carrito
 
+//TARJETA
 const tarjetaColor = document.querySelectorAll(".card")
 
-
+//Para cambiar el color del fondo de la tarjeta cuando clicke en ella
 tarjetaColor.forEach(elemento => elemento.addEventListener("click", (event) =>{
    //Como quiero que se cambie el color de la tarjeta justo que estoy clickando, usamos current target
     console.log(event.currentTarget)
     event.currentTarget.classList.toggle("tarjetaActiva")
 }))
+
+//ICONO
+
+//Para cambiar el color del corazón cuando clicke en el
+const corazon = document.querySelectorAll(".corazon")
+
+corazon.forEach(elemento => elemento.addEventListener("click", (event) => {
+    event.currentTarget.classList.toggle("iconoActivo")
+    //Para parar la propagación del evento del padre y que cuando clicke en el corazón, no se cambie el color de la tarjeta
+    event.stopPropagation()
+}))
+
+//BOTÓN y añadir carrito
+
+//Array con los productos
+const productosTienda =[
+    {nombre:"item 1", precio: 5},
+    {nombre:"item 2", precio: 10},
+    {nombre:"item 3", precio: 15},
+    {nombre:"item 4", precio: 10},
+    {nombre:"item 5", precio: 15},
+    {nombre:"item 6", precio: 5},
+]
+
+//Array vacio para el carrito
+const carrito =[]
+
+const listaCarrito = document.querySelector(".listaCarrito");
+const totalCarrito = document.querySelector(".total")
+
+//función para renderizar
+
+function renderizarCarrito(){
+    listaCarrito.innerHTML =""
+
+    carrito.forEach((producto) =>{
+        const itemCarrito = document.createElement("li")
+        itemCarrito.textContent = `${producto.nombre} ${producto.precio}€`;
+        listaCarrito.appendChild(itemCarrito)
+
+
+    })
+}
+
+renderizarCarrito()
+
+const boton1 = document.querySelector(".btn1")
+const boton2 = document.querySelector(".btn2")
+const boton3 = document.querySelector(".btn3")
+const boton4 = document.querySelector(".btn4")
+const boton5 = document.querySelector(".btn5")
+const boton6 = document.querySelector(".btn6")
+
+boton1.addEventListener("click", (event)=>{
+    carrito.push(productosTienda[0])
+    event.stopPropagation()
+    renderizarCarrito()
+})
+
+boton2.addEventListener("click", (event)=>{
+    carrito.push(productosTienda[1])
+    event.stopPropagation()
+    renderizarCarrito()
+})
+
+boton3.addEventListener("click", (event)=>{
+    carrito.push(productosTienda[2])
+    event.stopPropagation()
+    renderizarCarrito()
+})
+
+boton4.addEventListener("click", (event)=>{
+    carrito.push(productosTienda[3])
+    event.stopPropagation()
+    renderizarCarrito()
+})
+
+boton5.addEventListener("click", (event)=>{
+    carrito.push(productosTienda[4])
+    event.stopPropagation()
+    renderizarCarrito()
+})
+
+boton6.addEventListener("click", (event)=>{
+    carrito.push(productosTienda[5])
+    event.stopPropagation()
+    renderizarCarrito()
+})
